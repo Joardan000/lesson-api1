@@ -28,7 +28,6 @@ async function cardsGet (id){
         }
         let response = await fetch(id,{method:"GET"});
         let json = await response.json();
-        cards.innerHTML = "";
         render(json, cards);
     }catch(err){
         console.log(err);
@@ -40,6 +39,7 @@ async function cardsGet (id){
 cardsGet(`https://api.escuelajs.co/api/v1/products`);
 
 function render(data, wrapper){
+    wrapper.innerHTML = "";
     data.forEach((card)=>{
         let div = document.createElement("div");
         div.classList.add("w-[500px]", "rounded-xl", "shadow", "shadow-gray-50", "p-2");
